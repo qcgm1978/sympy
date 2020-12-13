@@ -1,6 +1,7 @@
 import unittest
 from sympy import *
-
+import sympy.matrices.matrices 
+# import sympy
 class TDD_TEST_CALCULUS(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -81,8 +82,9 @@ class TDD_TEST_CALCULUS(unittest.TestCase):
         self.assertEqual(M*N,Matrix([[0,24],[0,15]]))
         self.assertEqual(M**2,Matrix([[-5,12],[-8,3]]))
         self.assertEqual(M**-1,simplify('1/(1*3-(-2*3))* Matrix([[3,-3],[2,1]])'))
-
-
+        self.assertRaises(sympy.matrices.NonInvertibleMatrixError,lambda:N**-1)
+        M = Matrix([[1, 2, 3], [4, 5, 6]])
+        self.assertEqual(M.T,Matrix([[1,4],[2,5],[3,6]]))
 if __name__ == '__main__':
     unittest.main()
                 
